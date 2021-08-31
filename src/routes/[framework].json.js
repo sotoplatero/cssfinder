@@ -1,5 +1,6 @@
 
-import { toJSON, toCSS } from 'cssjson';
+import pkg from 'cssjson';
+const { toJSON } = pkg;
 import {frameworks} from '$lib/frameworks'
 /**
  * @type {import('@sveltejs/kit').RequestHandler}

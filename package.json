@@ -15,7 +15,6 @@
     "@sveltejs/adapter-vercel": "next",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
-    "cssjson": "^2.1.3",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.0",
@@ -27,5 +26,8 @@
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "cssjson": "^2.1.3"
+  }
 }
