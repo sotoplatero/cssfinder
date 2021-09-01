@@ -112,7 +112,7 @@
 
 <footer class="text-center">
 	<small>
-		<p>Use <a href="https://kit.svelte.dev">SvelteKit</a> and <a href="https://jenil.github.io/chota">chota</a> and deployed in <a href="https://vercel.com">vercel</a></p>
+		<p>Using <a href="https://kit.svelte.dev">SvelteKit</a> and <a href="https://jenil.github.io/chota">chota</a> and deployed in <a href="https://vercel.com">vercel</a></p>
 		<p>
 			if you 💓 CSSFinder follow me <a href="https://twitter.com/sotoplatero" rel="me">@sotoplatero</a> to see more projects 🚀
 		</p>
@@ -120,7 +120,7 @@
 </footer>
 
 <style>
-	input{
+	input[type="text"] {
 		padding-top: 3px; 
 		padding-bottom: 3px;
 	}
