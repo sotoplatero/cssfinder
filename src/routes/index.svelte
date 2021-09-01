@@ -39,6 +39,19 @@
 
 	$:framework && handleSearch()
 
+	let selected= []
+	function toggleSelect(name) {
+		name = name.replace(/^\./,'')
+		const index = selected.indexOf(name)
+		if ( index > -1 ) {
+			selected.splice(index,1)
+			selected = selected
+		} else {
+			selected = [...selected, name]
+		}
+		toClipboard( selected.join(' ') )
+	}
+
 </script>
 
 <h1 class="text-center">
