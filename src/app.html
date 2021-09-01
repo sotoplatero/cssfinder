@@ -23,14 +23,35 @@
 		<meta property="twitter:description" content="With CSS Finder you can search and view the css classes in the most used css frameworks: bootstrap, tailwind, bulma">
 		<meta property="twitter:image" content="https://cdn.statically.io/og/CSS Finder — Search class name css in framework css.jpg">
 
-		<link rel="stylesheet" href="https://classless.de/classless.css">
+		<!-- <link rel="stylesheet" href="https://classless.de/classless.css"> -->
+		<!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css"> -->
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css"> -->
+		<link rel="stylesheet" href="https://unpkg.com/chota@latest">
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">		
 		%svelte.head%
+		<style type="text/css">
+			:root {
+			  --bg-color: #ffffff;
+			  --bg-secondary-color: #f3f3f6;
+			  --color-primary: #5555FF;
+			  --color-lightGrey: #d2d6dd;
+			  --color-grey: #747681;
+			  --color-darkGrey: #3f4144;
+			  --color-error: #d43939;
+			  --color-success: #28bd14;
+			  --grid-maxWidth: 720px;
+			  --grid-gutter: 2rem;
+			  --font-size: 1.6rem;
+			  --font-color: #333333;
+			  --font-family-sans: sans-serif;
+			  --font-family-mono: monaco, "Consolas", "Lucida Console", monospace;
+			}			
+		</style>
 	</head>
 	<body >
-		<div id="svelte">%svelte.body%</div>
+		<main id="svelte" class="container">%svelte.body%</main>
 	</body>
 </html>

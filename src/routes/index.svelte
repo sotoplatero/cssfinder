@@ -40,45 +40,56 @@
 	$:framework && handleSearch()
 
 </script>
-<h1>
+
+<h1 class="text-center">
 	<div>
 		<img src="/favicon-32x32.png" alt="">
 	</div>
-	<strong>CSS Finder</strong>
+	<strong>CSS<span style="color: #5555FF">Finder</span></strong>
 </h1>
+<div class="text-center">
+	<a href="https://github.com/sotoplatero/cssfinder">github</a>
+	<a href="https://twitter.com/intent/tweet?text=I%20use%20CSSFinder%20to%20search%20for%20css%20classes&url=cssfinder.xyz&via=sotoplatero" target="_blank">tweet</a>
+</div>
+<br>
 <form on:submit|preventDefault={handleSearch}>
-	<input type="text" bind:value={q} placeholder="Class name">
+	<input type="text" bind:value={q} placeholder="Type class name" >
 </form>
-<p>
+<br>
+<div>
 {#each names as name, index}
 	<label >
 		<input type="radio" bind:group={framework} value={name} name="framework">
 		{@html framework===name ? `<strong>${name}</strong>` : name }
 	</label>
 {/each}
-</p>
+</div>
 {#await promiseSearch}
 	<p>Searching...</p>
 {:then classes}
 
 	{#each classes as {name,attributes}, index}
 		<div>
-			<h4><a href >{name}</a></h4>
-			<dl>
-				<code>{@html attributes}</code>
-			</dl>
+		<pre><code><a href ><b>{name}</b></a> {@html attributes}</code></pre>
 		</div>
 	{/each}
-	{#if !classes.length && q}
+<!-- 	{#if !classes.length && q}
 		<p>No results found for <mark>{q}</mark> in <strong>{framework}</strong></p>
-	{/if}
+	{/if} -->
 
 {:catch error}
 	<p style="color: red">{error.message}</p>
 {/await}
-
-<footer>
+<br><br>
+<footer class="text-center">
 	<small>
-		if you 💓 CSSFinder follow me <a href="https://twitter.com/sotoplatero" rel="me">@sotoplatero</a> to see more projects 🚀
+		<p>Use <a href="https://kit.svelte.dev">SvelteKit</a> and <a href="https://jenil.github.io/chota">chota</a> and deployed in <a href="https://vercel.com">vercel</a></p>
+		<p>
+			if you 💓 CSSFinder follow me <a href="https://twitter.com/sotoplatero" rel="me">@sotoplatero</a> to see more projects 🚀
+		</p>
 	</small>
 </footer>
+
+<style>
+	input{padding-top: 3px; padding-bottom: 3px;}
+</style>
