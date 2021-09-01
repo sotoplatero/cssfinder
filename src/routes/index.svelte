@@ -15,6 +15,7 @@
 	
 </script>
 <script>
+	import {toClipboard} from 'copee'
 	export let names = []
 
 	let framework = 'tailwind'
@@ -61,39 +62,54 @@
 	<strong>CSS<span style="color: #5555FF">Finder</span></strong>
 </h1>
 <div class="text-center">
-	<a href="https://github.com/sotoplatero/cssfinder">github</a>
-	<a href="https://twitter.com/intent/tweet?text=I%20use%20CSSFinder%20to%20search%20for%20css%20classes&url=cssfinder.xyz&via=sotoplatero" target="_blank">tweet</a>
+	<a href="https://github.com/sotoplatero/cssfinder" target="_blank" rel="nofollower noopenner">github</a>
+	<a href="https://twitter.com/intent/tweet?text=I%20use%20CSSFinder%20to%20search%20for%20css%20classes&url=cssfinder.xyz&via=sotoplatero" target="_blank" rel="nofollower noopenner">tweet</a>
 </div>
+
+<!-- INPUT -->
 <br>
 <form on:submit|preventDefault={handleSearch}>
 	<input type="text" bind:value={q} placeholder="Type class name" >
 </form>
 <br>
+
+<!-- RADIO BUTTONS -->
 <div>
-{#each names as name, index}
-	<label >
-		<input type="radio" bind:group={framework} value={name} name="framework">
-		{@html framework===name ? `<strong>${name}</strong>` : name }
-	</label>
-{/each}
+	{#each names as name, index}
+		<label style="white-space: nowrap;">
+			<input type="radio" bind:group={framework} value={name} name="framework">
+			{@html framework===name ? `<strong>${name}</strong>` : name }
+		</label>&ThinSpace;
+	{/each}
 </div>
+<br>
+
+<!-- SELECTED CLASS -->
+{#if selected.length}
+<div>
+	{#each selected as name, index}
+		<code><a href on:click={toggleSelect(name)}>{name}</a></code>&ThinSpace;
+	{/each}
+</div>
+{/if}
+
+<!-- RESULTS -->
 {#await promiseSearch}
 	<p>Searching...</p>
 {:then classes}
-
+	{#if classes.length}
+		<p><i>Click on the class to copy it to clipboard</i></p>
+	{/if}
 	{#each classes as {name,attributes}, index}
-		<div>
-		<pre><code><a href ><b>{name}</b></a> {@html attributes}</code></pre>
-		</div>
+		<pre><code><a href on:click={()=>toggleSelect(name)}>{name}</a> {@html attributes}</code></pre>
 	{/each}
-<!-- 	{#if !classes.length && q}
-		<p>No results found for <mark>{q}</mark> in <strong>{framework}</strong></p>
-	{/if} -->
 
 {:catch error}
 	<p style="color: red">{error.message}</p>
 {/await}
+
 <br><br>
+
 <footer class="text-center">
 	<small>
 		<p>Use <a href="https://kit.svelte.dev">SvelteKit</a> and <a href="https://jenil.github.io/chota">chota</a> and deployed in <a href="https://vercel.com">vercel</a></p>
@@ -104,5 +120,8 @@
 </footer>
 
 <style>
-	input{padding-top: 3px; padding-bottom: 3px;}
+	input{
+		padding-top: 3px; 
+		padding-bottom: 3px;
+	}
 </style>
