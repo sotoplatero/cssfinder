@@ -69,7 +69,7 @@
 <!-- INPUT -->
 <br>
 <form on:submit|preventDefault={handleSearch}>
-	<input type="text" bind:value={q} placeholder="Type class name" >
+	<input type="text" bind:value={q} placeholder="Type class name" style="font-size: 1.7rem;padding-top: 1.2rem; padding-bottom: 1.2rem;">
 </form>
 <br>
 
