@@ -22,12 +22,13 @@ export async function get({ params, query }) {
 		json = Object.keys(json)
 			.map( key=> ({
 				name:key, 
-				attributes: JSON.stringify(json[key]['attributes'],null,4) 
+				attributes: JSON.stringify(json[key]['attributes'],null,4).replace(/"/g,'').replace(/,/g,';')
 			}) )
-			.filter( el => el.name.indexOf(q) > -1 )	
+			.filter( el => el.name.indexOf(q.toLowerCase()) > -1 )	
 
 		return {
 			body: json
 		};
 	}
+
 }
